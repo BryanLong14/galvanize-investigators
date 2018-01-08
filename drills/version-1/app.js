@@ -7,6 +7,11 @@ var center = {
   lng: -105.007
 };
 
+var contentString =
+  '<div id="content">' +
+  '<h1 id="firstHeading" class="firstHeading">Galvanize</h1>' +
+  "</div>";
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById("map"), {
     center: center,
@@ -18,4 +23,10 @@ function initMap() {
     position: center,
     map: map
   });
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+  marker.addListener('click', function() {
+         infowindow.open(map, marker);
+       });
 }
